@@ -55,17 +55,66 @@ namespace Assignment
 
         public int[] AS01_FindFirstAndLastElementOfArray(int[] array, int target)
         {
-            throw new NotImplementedException();
+            int first = -1;
+            int last = -1;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == target)
+                {
+                    if (first == -1)
+                    {
+                        first = i;
+                    }
+                    last = i;
+                }
+            }
+
+            if (first == -1)
+            {
+                return new int[] { -1 };
+            }
+
+            return new int[] { first, last };
         }
 
         public int AS02_FindMaxLessThan(int[] array, int target)
         {
-            throw new NotImplementedException();
+            int maxVal = -1;
+            bool found = false;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < target)
+                {
+                    if (!found || array[i] > maxVal)
+                    {
+                        maxVal = array[i];
+                        found = true;
+                    }
+                }
+            }
+
+            return found ? maxVal : -1;
         }
 
         public int[] AS03_FindRange(int[] array, int min, int max)
         {
-            throw new NotImplementedException();
+             if (min > max)
+            {
+                return new int[0];
+            }
+
+            System.Collections.Generic.List<int> result = new System.Collections.Generic.List<int>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= min && array[i] <= max)
+                {
+                    result.Add(array[i]);
+                }
+            }
+
+            return result.ToArray();
         }
 
         #endregion
@@ -74,7 +123,17 @@ namespace Assignment
 
         public int[] EX01_FindTargetEnemies(int[] enemyHPs, int mana)
         {
-            throw new NotImplementedException();
+            System.Collections.Generic.List<int> targets = new System.Collections.Generic.List<int>();
+
+            for (int i = 0; i < enemyHPs.Length; i++)
+            {
+                if (enemyHPs[i] <= mana)
+                {
+                    targets.Add(i);
+                }
+            }
+
+            return targets.ToArray();
         }
 
         #endregion
